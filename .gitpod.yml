@@ -1,0 +1,14 @@
+# see https://docs.gitpod.io/41_Config_Gitpod_File.html
+ports:
+- port: 3000
+tasks:
+- name: Frontend
+  init: yarn install --pure-lockfile
+  command: yarn watch
+- name: Backend
+  before: go run build.go setup
+  init: go run build.go build
+  openMode: split-right
+
+checkoutLocation: "src/github.com/grafana/grafana"
+workspaceLocation: "src/github.com/grafana/grafana"
